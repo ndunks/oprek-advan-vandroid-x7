@@ -2,3 +2,7 @@
 !/tmp/.gitkeep
 /stock-rom/*
 !/stock-rom/readme.md
+
+
+/android/*.img
+/android/workdir

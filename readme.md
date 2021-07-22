@@ -67,9 +67,10 @@ ro.product.version: 23.0.0
 - Get mkbootimg & unpackbootimg
 
 Flash fls file (Recover boot)
-## Modify Ramdisk
 
+## Modify Ramdisk
 Enable insecure, ADB Over wifi
+
 ``` bash
 # Load PATH & LIB of intel's DownloadTool / flsTool
 . setup-env.sh
@@ -78,7 +79,7 @@ Enable insecure, ADB Over wifi
 flsTool -x stock-rom/boot.fls -o tmp/boot
 mkdir -p kernel
 cp tmp/boot/boot.fls_ID0_CUST_LoadMap0.bin kernel/boot.img
-rm -rf boot/
+
 
 # Unpack Kernel / boot.img
 mkdir kernel/boot
@@ -97,6 +98,15 @@ fastboot reboot
 
 # Restore boot when bricked/bootloop
 downloadTool kernel/boot.fls
+```
 
+## Modify System / Android
+
+```
+# Unpack System Flash / system.fls
+flsTool -x stock-rom/system.fls -o tmp/system
+mkdir -p android
+# Convert sparse to RAW
+simg2img tmp/system/system.fls_ID0_CUST_LoadMap0.bin android/system.img
 
 ```

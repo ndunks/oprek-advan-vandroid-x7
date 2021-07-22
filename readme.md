@@ -67,12 +67,20 @@ ro.product.version: 23.0.0
 - Get mkbootimg & unpackbootimg
 
 Flash fls file (Recover boot)
+## Modify Ramdisk
 
+Enable insecure, ADB Over wifi
 ``` bash
 # Load PATH & LIB of intel's DownloadTool / flsTool
 . setup-env.sh
 
-# Unpack boot.img
+# Unpack Boot Flash / boot.fls
+flsTool -x stock-rom/boot.fls -o tmp/boot
+mkdir -p kernel
+cp tmp/boot/boot.fls_ID0_CUST_LoadMap0.bin kernel/boot.img
+rm -rf boot/
+
+# Unpack Kernel / boot.img
 mkdir kernel/boot
 unpackbootimg -i kernel/boot.img -o kernel/boot
 

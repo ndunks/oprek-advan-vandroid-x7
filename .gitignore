@@ -1,2 +1,4 @@
-/tmp
-
+/tmp/*
+!/tmp/.gitkeep
+/stock-rom/*
+!/stock-rom/readme.md

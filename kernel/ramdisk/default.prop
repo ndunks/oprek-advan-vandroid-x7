@@ -1,0 +1,20 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.app2sd.support=true
+persist.tel.hot_swap.support=true
+persist.ril-daemon.disable=dsds
+persist.opt.network-camp=true
+persist.radio.multisim.config=dsds
+ro.adb.secure=1
+ro.secure=1
+ro.allow.mock.location=0
+ro.debuggable=0
+ro.zygote=zygote32
+ro.enable_boot_charger_mode=0
+ro.dalvik.vm.native.bridge=libhoudini.so
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+persist.sys.usb.config=none

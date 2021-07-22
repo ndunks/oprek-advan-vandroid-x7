@@ -1,0 +1,14 @@
+on boot
+    insmod /system/lib/modules/btif_drv.ko
+
+on property:init.svc.setup_fs_nvm=stopped
+    mkdir /nvm_fs_partition/bluetooth 0774 bluetooth bluetooth
+    start init_bt_nvm
+
+on post-fs-data
+    chown bluetooth bluetooth /dev/ttyBT0
+
+service init_bt_nvm /system/bin/sh /system/etc/bluetooth/nvm_init.sh
+    class main
+    disabled
+    oneshot

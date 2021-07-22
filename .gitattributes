@@ -1,0 +1,9 @@
+*.fls binary
+*.img binary
+*.gz binary
+*.bin binary
+*.deb binary
+*.rar binary
+*.zip binary
+*-zImage binary
+

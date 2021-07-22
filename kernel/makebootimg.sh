@@ -32,3 +32,11 @@ mkbootimg \
        --header_version "$header_version" \
        --hash "$hash" \
        -o custom-boot.img
+
+if [ "$1X" != "X" ]; then
+       echo "Begin flasing"
+       adb shell reboot fastboot
+       sleep 3
+       fastboot flash boot custom-boot.img
+       fastboot reboot
+fi

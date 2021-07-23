@@ -17,9 +17,24 @@ Rooting & custom ramdisk
 - Baterai: Li-ion 2500 mAh
 
 ``` bash
-cat /proc/cmdline                                           
+#cat /proc/cmdline                                           
 androidboot.bootloader=1546.300_M1S1 androidboot.serialno=0123456789012345678901234567890 pmu_rst_src=0x00010004 pmu_shutdwn_src=0x00000000 scu_rsts=0x10018003 scu_bcfg=0x0C1F8981 param=1 androidboot.mode=normal console=ttyFIQ0,115200n8 idle=halt earlyprintk=xgold notsc apic=sofia androidboot.hardware=sofiaboard nolapic_pm firmware_class.path=/system/vendor/firmware androidboot.selinux=permissive x86_intel_xgold_timer=soctimer_only vmalloc=512m slub_max_order=2
+
+#cat /proc/version
+Linux version 3.14.0 (xiongsf@build119) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #5 SMP PREEMPT Tue Nov 24 17:28:54 CST 2015
 ```
+
+## Source ?
+
+Kernel? https://github.com/bmoraine/linux-sofia-3gr
+
+- https://github.com/search?l=Makefile&q=rk30sdk&type=repositories
+- https://github.com/flingone/device-rockchip-rk30sdk
+- https://github.com/mirsys/lichee_manifests/blob/default/intel_Sofia-3GR_android5.1.xml
+
+## Similar device
+
+- AOC A723G
 
 **Some `getprop` Info**
 ```
@@ -109,6 +124,19 @@ fastboot reboot
 downloadTool stock-rom/boot.fls
 downloadTool stock-rom/system.fls
 ```
+## Extract Recovery
+
+``` bash
+
+flsTool -x stock-rom/recovery.fls -o tmp/recovery
+mkdir -p recovery/unpacked
+unpackbootimg -i tmp/recovery/recovery.fls_ID0_CUST_LoadMap0.bin -o recovery/unpacked
+
+# Unpack initram
+mkdir -p recovery/ramdisk && cd recovery/ramdisk
+gzip -dc ../unpacked/recovery.fls*-ramdisk.gz | cpio -imdv
+
+```
 
 ## Modify System / Android
 
@@ -121,7 +149,3 @@ simg2img tmp/system/system.fls_ID0_CUST_LoadMap0.bin android/system.img
 
 ```
 
-## Source ?
-
-- https://github.com/search?l=Makefile&q=rk30sdk&type=repositories
-- https://github.com/flingone/device-rockchip-rk30sdk

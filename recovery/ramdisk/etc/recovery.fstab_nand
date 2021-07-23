@@ -1,0 +1,29 @@
+#
+# Copyright (C) 2013 Intel Mobile Communications GmbH
+#
+#      Sec Class: Intel Confidential (IC)
+#
+# Android fstab file.
+#<src>                         <mnt_point>  <type>  <mnt_flags and options>               <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+#
+
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID068  	/system              	ext4    defaults defaults
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID069  	/data                	ext4    defaults encryptable=footer
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID070      /cache               	ext4    defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID069      /mnt/internal_sd        vfat	defaults defaults
+/dev/block/mmcblk0p1                                            /mnt/external_sd        vfat	/dev/block/mmcblk0 defaults
+/dev/block/sda1                                            	/mnt/usb_storage        vfat	defaults defaults
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID076  	/nvm_fs_partition    	ext4    defaults defaults
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID074      /misc                   emmc    defaults defaults
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID071      /boot                   emmc 	defaults defaults
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID121      /recovery               emmc 	defaults defaults
+/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID122			/fwu			 	 						emmc 	 defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID122      /recoverym              emmc 	defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID001      /mobilevisor            emmc 	defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID114     /radio                  emmc 	defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID013      /splash_screen          emmc 	defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID115      /mvconfig               emmc 	defaults defaults
+#/dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID118      /secvm                  emmc 	defaults defaults
+

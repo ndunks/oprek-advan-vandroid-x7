@@ -35,8 +35,13 @@ mkbootimg \
 
 if [ "$1X" != "X" ]; then
        echo "Begin flasing"
-       adb shell reboot fastboot
+       adb reboot fastboot
        sleep 4
        fastboot flash recovery custom-recovery.img
        fastboot reboot
+       echo "Rebooting to recovery"
+       sleep 5
+       while ! adb reboot recovery &> /dev/null; do
+              sleep 1
+       done
 fi

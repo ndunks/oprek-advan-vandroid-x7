@@ -62,6 +62,15 @@ ro.product.version: 23.0.0
 
 ```
 
+## How to root
+
+Using PhilZ-X70R-portrait gained from [XDA](https://forum.xda-developers.com/t/teclast-x70r-c7f9-tablet-android-5-1-1-intel-sofia-atom-x3-c3230.3278453/post-64734774).
+Note: the display is not working!, but we can install SuperSu zip from adb. extract zip manually and run
+``` bash
+unzip {THE_ZIP_FILE}
+*/*/update-binary install 1 {THE_ZIP_FILE}
+```
+
 - Host system is Linux Debian x86_64
 - Install platformflashtoollite in tools
 - Get mkbootimg & unpackbootimg

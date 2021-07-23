@@ -3,6 +3,5 @@
 /stock-rom/*
 !/stock-rom/readme.md
 
-/recovery/unpacked
 /android/*.img
 /android/workdir

@@ -28,6 +28,9 @@ trap cleanmount 0
 cd workdir/system
 ## Begin modify filesytem
 
+echo "Install SuperSU"
+. "$MYDIR/supersu.sh"
+
 echo "Copying Apks"
 for f in "$MYDIR"/apks/*.apk; do
     APKNAME="${f##*/}"
@@ -41,12 +44,10 @@ for f in "$MYDIR"/apks/*.apk; do
     fi
     sudo mkdir -p "app/$DIRNAME"
     sudo cp -f -T "$f" "app/$DIRNAME/$APKNAME"
-    sudo chmod 0777 "app/$DIRNAME/$APKNAME"
+    sudo chmod 0755 "app/$DIRNAME/$APKNAME"
     echo "OK"
 done
 
-#echo "Install SuperSU"
-#./supersu.sh
 
 
 echo "Modify build.prop"

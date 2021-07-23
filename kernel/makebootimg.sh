@@ -35,7 +35,7 @@ mkbootimg \
 
 if [ "$1X" != "X" ]; then
        echo "Begin flasing"
-       adb shell reboot fastboot
+       adb reboot fastboot
        sleep 3
        fastboot flash boot custom-boot.img
        fastboot reboot

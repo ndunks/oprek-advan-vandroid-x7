@@ -97,7 +97,8 @@ fastboot flash boot custom-boot.img
 fastboot reboot
 
 # Restore boot when bricked/bootloop
-downloadTool kernel/boot.fls
+downloadTool stock-rom/boot.fls
+downloadTool stock-rom/system.fls
 ```
 
 ## Modify System / Android
@@ -110,3 +111,8 @@ mkdir -p android
 simg2img tmp/system/system.fls_ID0_CUST_LoadMap0.bin android/system.img
 
 ```
+
+## Source ?
+
+- https://github.com/search?l=Makefile&q=rk30sdk&type=repositories
+- https://github.com/flingone/device-rockchip-rk30sdk

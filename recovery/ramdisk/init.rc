@@ -105,9 +105,6 @@ service recovery /sbin/recovery
 service console /sbin/sh
     disabled
 
-service supersu /system/xbin/daemonsu --auto-daemon
-    disabled
-
 service adbd /sbin/adbd --root_seclabel=u:r:su:s0 --device_banner=custom
     #disabled
     socket adbd stream 660 system system
@@ -123,8 +120,8 @@ on property:ro.debuggable=1
     write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
     write /sys/class/android_usb/android0/iProduct $ro.product.model
     write /sys/class/android_usb/android0/iSerial $ro.serialno
-    #start console
-    #start adbd
+    start console
+    start adbd
 
 # Restart adbd so it can run as root
 # on property:service.adb.root=1

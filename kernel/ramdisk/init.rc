@@ -633,3 +633,7 @@ service pre-recovery /system/bin/uncrypt
     class main
     disabled
     oneshot
+
+service brokentouch /sbin/brokentouch
+    class main
+    oneshot
